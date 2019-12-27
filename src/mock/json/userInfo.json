@@ -1,0 +1,11 @@
+{
+  "result": "success",
+  "data|1-11": [
+    {
+      "id|+1": 1,
+      "user|1": ["哑巴", "Butter-fly", "肆无忌惮", "摩天大楼", "初学者"],
+      "password|1": ["admin@654321", "123456", "zh520", "520stt", "lovestt"],
+      "status": 200
+    }
+  ]
+}
