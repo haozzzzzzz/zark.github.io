@@ -4,8 +4,7 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 export default new VueRouter({
-  routes: [
-    {// 访问登录页   //获取登录权限后 让他跳转到 /
+  routes: [{ // 访问登录页   //获取登录权限后 让他跳转到 /
       path: '/login',
       component: () => import(/* webpackChunkName: "login" */ '../components/common/Login.vue')
     },
@@ -45,7 +44,7 @@ export default new VueRouter({
           name: 'icon',
           component: () => import(/* webpackChunkName: "icon" */ '../components/page/Icon.vue'),
           meta: {
-            title: '图标列'
+            title: '自定义图标'
           }
         },
         {
@@ -71,17 +70,23 @@ export default new VueRouter({
               title: '三级菜单'
             },
             children: [{
-
-              path: '/editor',
+              path: '/editor1',
               name: 'editor',
-              component: () => import(/* webpackChunkName: "editor" */ '../components/page/editor.vue'),
+              component: () => import(/* webpackChunkName: "editor" */ '../components/page/VueEditor.vue'),
               meta: {
                 title: '富文本编辑器'
-
               }
             }]
           }]
-        }
+        },
+        {
+          // 富文本编辑器组件
+          path: '/editor',
+          component: () => import(/* webpackChunkName: "editor" */ '../components/page/VueEditor.vue'),
+          meta: {
+            title: '富文本编辑器'
+          }
+        },
       ]
     },
   ]

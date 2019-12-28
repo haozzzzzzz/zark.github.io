@@ -18,6 +18,7 @@ body,
     color: skyblue !important;
   }
 }
+// 内容区 离左边一个Aside距离 上 一个Header距离
 .content-box {
   position: absolute;
   left: 200px;
@@ -29,6 +30,7 @@ body,
   transition: left 0.3s ease-in-out;
   background-color: #f0f0f0;
 }
+//内容区滚动
 .content {
   width: auto;
   height: 100%;
@@ -36,16 +38,30 @@ body,
   overflow-y: scroll;
   box-sizing: border-box;
 }
+// 动态切换折叠菜单栏 点击折叠为真 向左60px 为假 没有这个类名
 .collapse-content {
   left: 60px;
 }
+// 内容区 主体内容区
 .container{
   padding: 30px;
   background-color: #fff;
 }
+// 主体内容区 头部样式
+.container-header {
+  margin: 10px 0;
+}
+
+
 a {
   text-decoration: none;
 }
 li {
   list-style: none;
+}
+.pr10{
+  padding-right: 10px;
+}
+.mr20{
+  margin-right: 20px !important;
 }

@@ -5,12 +5,24 @@ import store from './store'
 import ElementUI from 'element-ui'
 // 引入elm样式
 import './assets/css/global.less'
+// 引入图标样式
+import './assets/css/icon.css'
 import 'element-ui/lib/theme-chalk/index.css'
+// 引入高亮js
+import VuehighlightJS from 'vue-highlightjs'
+// 引入高亮css
+import './assets/css/atom-one-dark.css'
 // 引入axios请求方式
 import axios from 'axios'
 // 挂载axios到Vue 原型上
 Vue.prototype.$http = axios
 Vue.use(ElementUI)
+// 全局定义element尺寸大小
+Vue.prototype.$ELEMENT = {
+  size: 'small',
+  zIndex: 3000
+}
+Vue.use(VuehighlightJS)
 // 引入mockjs发起请求假数据
 require('./mock/index')
 Vue.config.productionTip = false
@@ -25,6 +37,11 @@ router.beforeEach((to, from, next) => {
   } else {
     next();
   }
+  // 这个是存储token 用户名信息的 下面这个操作cookie的
+  // 1.npm install vue-cookies --save
+  // 2.引入 并全局挂载  注意使用这里的this  箭头函数改变this指向
+  // 3.设置cookie  this.$cookies.set(keyName, time) 获取cookie this.$cookies.get(keyName)
+  // 3.1 删除cookie this.$cookies.remove(keyName)  查看所有cookie名称 数组 this.$cookies.isKey(keyName)
 })
 new Vue({
   router,

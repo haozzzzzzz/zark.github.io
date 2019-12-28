@@ -2,6 +2,8 @@ const Mock = require('mockjs')
 
 // Mock.mock('/user/userInfo', 'get', require('./json/userInfo'))
 
+Mock.mock('/table/tableInfo', 'get', require('./json/table.json'))
+
 const Random = Mock.Random
 const arrlist = Random.cname()
 console.log(arrlist);
