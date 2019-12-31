@@ -107,10 +107,10 @@ export default {
     },
     // 已读消息删除去回收站
     handleDelete(index) {
-      const item = this.tabData.splice(index, 1)
+      const item = this.Read.splice(index, 1)
       this.recycle = item.concat(this.recycle)
     },
-    // 聪回收站还原消息
+    // 从回收站还原消息
     handleReduction(index) {
       let item = this.recycle.splice(index, 1)
       this.Read = item.concat(this.Read)
@@ -126,7 +126,7 @@ export default {
     },
     EmptyDelete() {
       // 清空回收站
-      this.recycle.splice(0, this.tabData.length)
+      this.recycle.splice(0, this.recycle.length)
     }
   }
 }

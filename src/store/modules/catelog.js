@@ -25,7 +25,7 @@ const catelog = {
   },
   mutations: {
     SET_CATA_LOG_STATUS_OBJ: (state, catelogStatusList) => {
-      console.log(state, '===', catelogStatusList);
+      // console.log(state, '===', catelogStatusList);
       var statusObjList = {}
       catelogStatusList.map((_item) => {
         statusObjList[_item.code] = {}

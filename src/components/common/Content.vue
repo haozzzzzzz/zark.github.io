@@ -29,7 +29,7 @@ export default {
     getBreadcrumb() {
       let matched = this.$route.matched.filter(item => item.name)
       this.leveList = matched
-      console.log(this.leveList)
+      // console.log(this.leveList)
     }
   },
   watch: {

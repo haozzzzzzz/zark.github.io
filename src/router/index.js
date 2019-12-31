@@ -80,11 +80,27 @@ export default new VueRouter({
           }]
         },
         {
+          path: '/upload',
+          name: 'upload',
+          component: () => import(/* webpackChunkName: "icon" */ '../components/page/Upload.vue'),
+          meta: {
+            title: '文件上传'
+          }
+        },
+        {
           // 富文本编辑器组件
           path: '/editor',
           component: () => import(/* webpackChunkName: "editor" */ '../components/page/VueEditor.vue'),
           meta: {
             title: '富文本编辑器'
+          }
+        },
+        {
+          path: '/echarts',
+          name: 'echarts',
+          component: () => import(/* webpackChunkName: "icon" */ '../echarts/Echart.vue'),
+          meta: {
+            title: '图标数据'
           }
         },
       ]

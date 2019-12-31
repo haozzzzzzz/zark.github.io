@@ -5,7 +5,12 @@
     <div class="content-box" :class="{'collapse-content':collapse}">
       <Content />
       <div class="content">
-        <router-view></router-view>
+        <transition name="move" mode="out-in">
+          <keep-alive>
+            <router-view></router-view>
+          </keep-alive>
+        </transition>
+        <el-backtop target=".content">Up</el-backtop>
       </div>
     </div>
   </div>

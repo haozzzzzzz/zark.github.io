@@ -4,6 +4,7 @@
       <i class="el-icon-menu pr10"></i>自定义图标
     </div>
     <div class="container">
+      <!-- 回到顶部 需要给最外层盒子设置高度 纵向滚动 -->
       <h2>图标</h2>
       <div class="search-box">
         <el-input
@@ -23,6 +24,8 @@
           </li>
         </ul>
       </div>
+      <!-- <div class="wraper"> -->
+      <!-- </div> -->
     </div>
   </div>
 </template>
@@ -162,7 +165,7 @@ export default {
   },
   computed: {
     obj() {
-      // 计算属性监听   先过来图标数组 如果item满足 包括this.keyword 就返回给this.iconList数组
+      // 计算属性监听   先过滤图标数组 如果item满足 包括this.keyword 就返回给this.iconList数组
       return this.iconList.filter(item => {
         return item.indexOf(this.keyword) !== -1
       })
@@ -172,6 +175,16 @@ export default {
 </script>
 
 <style lang="less" scoped>
+// .content {
+//   overflow-y: visible !important;
+// }
+// .container {
+//   height: 500px;
+//   overflow: hidden;
+//   overflow-x: hidden;
+//   overflow-y: scroll;
+// }
+
 .search-box {
   text-align: center;
   margin-top: 10px;

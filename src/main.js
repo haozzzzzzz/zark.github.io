@@ -14,6 +14,8 @@ import VuehighlightJS from 'vue-highlightjs'
 import './assets/css/atom-one-dark.css'
 // 引入axios请求方式
 import axios from 'axios'
+import VueCropper from 'vue-cropperjs'
+Vue.use(VueCropper)
 // 挂载axios到Vue 原型上
 Vue.prototype.$http = axios
 Vue.use(ElementUI)

@@ -35,7 +35,7 @@ export default {
       this.$http
         .get('/user/userInfo')
         .then(res => {
-          console.log(res)
+          // console.log(res)
           if (res.status === 200) {
             this.Name = res.data.Cname
             this.$store.commit('getName', this.Name)
@@ -45,7 +45,7 @@ export default {
           }
         })
         .catch(e => {
-          console.log(e)
+          // console.log(e)
         })
     },
     reset() {

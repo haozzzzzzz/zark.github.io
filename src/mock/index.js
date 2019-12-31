@@ -6,7 +6,7 @@ Mock.mock('/table/tableInfo', 'get', require('./json/table.json'))
 
 const Random = Mock.Random
 const arrlist = Random.cname()
-console.log(arrlist);
+// console.log(arrlist);
 const JsonObj = require('./json/userInfo')
 JsonObj.Cname = arrlist
 Mock.mock('/user/userInfo', 'get', JsonObj)

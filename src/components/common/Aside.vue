@@ -105,7 +105,7 @@ export default {
         },
         {
           icon: 'el-icon-s-marketing',
-          index: 'charts',
+          index: 'echarts',
           title: 'schart图表'
         },
         {
