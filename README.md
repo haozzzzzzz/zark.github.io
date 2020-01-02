@@ -49,6 +49,14 @@ http://mockjs.com/examples.html#Name mock用法文档
 
 #### state
 
+### Echarts使用 在echarts里面 有介绍
+
+### 富文本 使用vue-quill-editor插件  引入样式文件即可
+
+### 上传 用的是elm的上传组件 裁剪上传用的是VueCropper插件 但是没样式  需要自己写样式  待解决 !!!
+
+### 自定义图标 需要写一个过滤  实现筛选功能 详情见自定义图标组件
+
 1.直接使用this.$store.state获取到值
 
 2.可以利用`vuex`提供的`mapState`辅助函数将state映射到计算属性中去
