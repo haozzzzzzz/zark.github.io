@@ -8,6 +8,8 @@ import './assets/css/global.less'
 // 引入图标样式
 import './assets/css/icon.css'
 import 'element-ui/lib/theme-chalk/index.css'
+// 引入全局指令
+import './components/common/v-dialogDrag'
 // 引入高亮js
 import VuehighlightJS from 'vue-highlightjs'
 // 引入高亮css

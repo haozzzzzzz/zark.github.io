@@ -75,10 +75,6 @@ export default {
           title: '表单相关',
           subs: [
             {
-              index: 'form',
-              title: '基本表单'
-            },
-            {
               index: '',
               title: '三级菜单',
               subs: [
@@ -86,10 +82,6 @@ export default {
                   index: 'editor',
                   title: '富文本编辑器'
                 },
-                {
-                  index: 'markdown',
-                  title: 'markdown编辑器'
-                }
               ]
             },
             {
@@ -114,7 +106,7 @@ export default {
           title: '拖拽组件',
           subs: [
             {
-              index: '',
+              index: 'drag',
               title: '拖拽列表'
             },
             {
@@ -127,21 +119,6 @@ export default {
           icon: 'el-icon-folder-delete',
           index: 'i18n',
           title: '国际化功能'
-        },
-        {
-          icon: 'el-icon-s-flag',
-          index: '7',
-          title: '错误处理',
-          subs: [
-            {
-              index: 'permission',
-              title: '权限测试'
-            },
-            {
-              index: '404',
-              title: '404页面'
-            }
-          ]
         },
         {
           icon: 'el-icon-pie-chart',

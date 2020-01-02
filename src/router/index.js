@@ -103,6 +103,22 @@ export default new VueRouter({
             title: '图标数据'
           }
         },
+        {
+          path: '/drag',
+          name: 'drag',
+          component: () => import(/* webpackChunkName: "icon" */ '../components/page/Drag.vue'),
+          meta: {
+            title: '拖拽列表'
+          }
+        },
+        {
+          path: '/dialog',
+          name: 'dialog',
+          component: () => import(/* webpackChunkName: "icon" */ '../components/page/Dialog.vue'),
+          meta: {
+            title: '拖拽弹框'
+          }
+        },
       ]
     },
   ]
