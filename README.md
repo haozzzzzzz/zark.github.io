@@ -62,7 +62,7 @@ http://mockjs.com/examples.html#Name mock用法文档
 2.可以利用`vuex`提供的`mapState`辅助函数将state映射到计算属性中去
 
 ```javascript
-import {mapState} from 'vuex'
+import { mapState } from 'vuex'
 // 在组件 引入 辅助函数 在计算属性中映射使用
 export default {
    computed: mapState({

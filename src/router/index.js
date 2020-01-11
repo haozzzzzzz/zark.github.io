@@ -119,6 +119,14 @@ export default new VueRouter({
             title: '拖拽弹框'
           }
         },
+        {
+          path: '/notification',
+          name: 'notification',
+          component: () => import(/* webpackChunkName: "icon" */ '../components/page/Notification.vue'),
+          meta: {
+            title: '弹窗提示'
+          }
+        },
       ]
     },
   ]

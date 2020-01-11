@@ -117,8 +117,8 @@ export default {
         },
         {
           icon: 'el-icon-folder-delete',
-          index: 'i18n',
-          title: '国际化功能'
+          index: 'notification',
+          title: '弹窗提示'
         },
         {
           icon: 'el-icon-pie-chart',
