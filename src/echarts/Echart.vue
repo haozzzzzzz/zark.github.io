@@ -13,6 +13,7 @@
 </template>
 <script>
 import echarts from 'echarts'
+// import axios from 'axios'
 export default {
   data() {
     return {
@@ -318,6 +319,9 @@ export default {
         this.myData1 = res.data.data
       })
       this.setting()
+      this.$http.get('http://rap2api.taobao.org/app/mock/242751/movielistinfo').then(response => {
+        console.log(response);
+      })
     },
     getDateB() {
       this.$http.get('/user/userInfo').then(res => {

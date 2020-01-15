@@ -9,7 +9,11 @@
 - 高亮格式化代码
 - MockJs写假数据,返回获取Json数据 查看mock
 http://mockjs.com/examples.html#Name mock用法文档
-- Vuex 使用(存取 看后面详情介绍)
+- Vuex 使用(存取 看后面详情介绍) 
+- 使用RAP2 模拟请求假数据 详情在echarts里面有介绍 
+``` javascript
+http://rap2.taobao.org/repository/editor?id=242751&mod=354006&itf=1447271
+```
 
 ## Project setup
 
@@ -147,4 +151,6 @@ this.$store.getters.方法名        <====== 取值
 getters 里面记得要 return
 localStorage.getItem('key')
 ```
+
+
 
