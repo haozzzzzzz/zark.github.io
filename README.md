@@ -32,9 +32,10 @@ http://mockjs.com/examples.html#Name mock用法文档
 
 8.`git reflog` 查看历史版本号
 
-9.git reset --hard 版本号 实现版本回退
+9.git reset --hard 版本号 实现版本回退 回退完直接push即可
 
-30.本地代码与远程分支做关联 `git remote add origin git@'XXX仓库地址'`
+30.本地代码与远程分支做关联 `git remote add origin git@'XXX仓库地址'`  
+`git remote rm origin` 跟远程解除关联
 
 
 ### 配置eslint配置化  请查看.eslintrc.js
