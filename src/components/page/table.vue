@@ -131,6 +131,7 @@ export default {
       this.from = row
       this.idindex = index
       this.dialogShow = true
+      console.log(this.from, this.idindex)
     },
     // 保存编辑
     saveEdit() {
