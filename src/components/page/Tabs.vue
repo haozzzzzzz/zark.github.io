@@ -63,6 +63,7 @@
         </el-tab-pane>
       </el-tabs>
     </div>
+    <div>{{value}}</div>
   </div>
 </template>
 <script>
@@ -70,31 +71,50 @@ export default {
   data() {
     return {
       activeName: 'first',
+      value: '',
       tabData: [
         {
           date: '2018-04-19 20:00:00',
-          title: '【系统通知】该系统将于今晚凌晨2点到5点进行升级维护'
+          title: '【系统通知】该系统将于今晚凌晨2点到5点进行升级维护',
         },
         {
           date: '2018-04-19 21:00:00',
-          title: '今晚12点整发大红包，先到先得'
-        }
+          title: '今晚12点整发大红包，先到先得',
+        },
       ],
       Read: [
         {
           date: '2018-04-19 20:00:00',
-          title: '【系统通知】该系统将于今晚凌晨2点到5点进行升级维护'
-        }
+          title: '【系统通知】该系统将于今晚凌晨2点到5点进行升级维护',
+        },
       ],
       recycle: [
         {
           date: '2018-04-19 20:00:00',
-          title: '【系统通知】该系统将于今晚凌晨2点到5点进行升级维护'
-        }
-      ]
+          title: '【系统通知】该系统将于今晚凌晨2点到5点进行升级维护',
+        },
+      ],
     }
   },
+  created() {
+    this.animation(1000)
+  },
   methods: {
+    animation(value) {
+      let number = value
+      let step = 5
+      let now = 0
+      let paly = () => {
+        now += step
+        if (now > number) {
+          now = number
+          return (this.value = now)
+        }
+        this.value = now
+        window.requestAnimationFrame(paly)
+      }
+      window.requestAnimationFrame(paly)
+    },
     // el-tab-pane 点击事件
     handleClick(tab, event) {
       console.log(tab, event)
@@ -127,8 +147,8 @@ export default {
     EmptyDelete() {
       // 清空回收站
       this.recycle.splice(0, this.recycle.length)
-    }
-  }
+    },
+  },
 }
 </script>
 
