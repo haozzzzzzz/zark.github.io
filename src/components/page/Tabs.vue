@@ -97,10 +97,14 @@ export default {
     }
   },
   created() {
-    this.animation(1000)
+    this.$nextTick(() => {
+      console.log(11111)
+      this.animation(1000)
+    })
   },
   methods: {
     animation(value) {
+      console.log('进来了 ---')
       let number = value
       let step = 5
       let now = 0
@@ -147,6 +151,14 @@ export default {
     EmptyDelete() {
       // 清空回收站
       this.recycle.splice(0, this.recycle.length)
+    },
+  },
+  watch: {
+    '$route.path': function (newVal, oldVal) {
+      const that = this
+      if (newVal === '/tabs') {
+        that.animation(1000)
+      }
     },
   },
 }

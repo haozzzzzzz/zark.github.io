@@ -98,7 +98,7 @@ export default {
         {
           icon: 'el-icon-s-marketing',
           index: 'echarts',
-          title: 'schart图表'
+          title: 'echarts图表'
         },
         {
           icon: 'el-icon-pie-chart',

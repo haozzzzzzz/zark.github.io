@@ -10,7 +10,7 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    "indent": ["off", 2], //禁止检查缩进问题
+    "indent": ["off", 0], //禁止检查缩进问题
     "space-before-function-paren": 0, // 解决函数名后+1空格的报错
     "no-irregular-whitespace": "off", //这禁止掉 空格报错检查
     'semi': 0, //不检查分号
