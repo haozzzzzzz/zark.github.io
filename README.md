@@ -153,4 +153,194 @@ localStorage.getItem('key')
 ```
 
 
+2. 使用Getters
+```jsx
+  state: {
+    todos: [
+      { id: 1, text: '...', done: true },
+      { id: 2, text: '...', done: false }
+    ]
+  },
+  getters: {
+    doneTodos: state => {
+      return state.todos.filter(todo => todo.done)
+    }
+  }
+
+  1. 使用this.state.getters.doneTodos 访问值
+  2. 辅助函数 mapGetters
+
+  import { mapGetters } from 'vuex'
+
+  export default {
+    // ...  直接在data里面使用this.doneTodosCount  this.doneCount访问这些值  
+    computed: {
+    // 使用对象展开运算符将 getter 混入 computed 对象中
+      ...mapGetters([
+        'doneTodosCount',
+        // 把 `this.doneCount` 映射为 `this.$store.getters.doneTodosCount`
+        doneCount: 'doneTodosCount'
+        // ...
+      ])
+    }
+  }
+```
+
+3. 使用Mutations
+```jsx
+    1. store.commit('increment', 10)  触发的mutations方法名 以及传参  提交载荷（Payload）
+        store.commit('increment', {
+          amount: 10
+        })
+
+    2.  store.commit({
+          type: 'increment',
+          amount: 10
+        })    使用对象风格提交
+
+    3.  Mutation 必须是同步函数 
+        使用钩子函数 mapMutations 
+        import { mapMutations } from 'vuex'
+        export default {
+        // ...
+        methods: {
+            ...mapMutations([
+              'increment', // 将 `this.increment()` 映射为 `this.$store.commit('increment')`
+
+              // `mapMutations` 也支持载荷：
+              'incrementBy' // 将 `this.incrementBy(amount)` 映射为 `this.$store.commit('incrementBy', amount)`
+            ]),
+            ...mapMutations({
+              add: 'increment' // 将 `this.add()` 映射为 `this.$store.commit('increment')`
+            })
+          }
+        }
+```
+ 
+4. 使用Action *提交的是 mutation*  主要处理异步
+```jsx
+    state: {
+      count: 0
+    },
+    mutations: {
+      increment (state) {
+        state.count++
+      }
+    },
+    actions: {
+      // 定义
+      increment (context) {
+        context.commit('increment')
+      }  // 第一种方式
+
+      increment ({ commit }) {
+        commit('increment')
+      }  // 第二种方式
+
+
+      // 分发（触发）
+
+      1. store.dispatch('increment')
+      2. // 以载荷形式分发
+        store.dispatch('incrementAsync', {
+            amount: 10
+          })
+        }
+      3. // 以对象形式分发
+        store.dispatch({
+          type: 'incrementAsync',
+          amount: 10
+        })
+      *在组件中分发action*
+      import { mapActions } from 'vuex'
+      methods: {
+        ...mapActions([
+          'increment', // 将 `this.increment()` 映射为 `this.$store.dispatch('increment')`
+
+          // `mapActions` 也支持载荷：
+          'incrementBy' // 将 `this.incrementBy(amount)` 映射为 `this.$store.dispatch('incrementBy', amount)`
+        ]),
+        ...mapActions({
+          add: 'increment' // 将 `this.add()` 映射为 `this.$store.dispatch('increment')`
+        })
+      }
+```
+
+5. 组合使用
+```jsx
+  1.  创建store文件夹 -> index.js getter.js  modules文件夹
+
+    1. index.js
+      import Vue from 'vue'
+      import Vuex from 'vuex'
+      import catelog from './modules/catelog'
+      import getters from './getters'
+      Vue.use(Vuex)
+
+      const store = new Vuex.Store({
+        modules:{
+          catelog
+        },
+        getters
+      })
+      export default store    // vue主入口导入 store 即可
+
+    2. getters.js
+      const getters ={
+        statusList:(state)=>state.catelog.statusList
+        //  通过...mapGetters(['statusList'])   直接在组件内使用this.statusList数组 相当于data里面定义的数组
+      }
+    3. catelog.js 
+      import * as catelogApi from '../../utils/api'
+      const catelog ={
+        state:{
+          searchType: {
+            1: '勾选',
+            2: '不勾选'
+          },
+          statusList: [{
+              type: 1,
+              name: '订阅完成'
+            },
+            {
+              type: 2,
+              name: '取消订阅'
+            }
+          ],
+        },
+        mutations:{},
+        actions:getActions()
+      }
+      function getActions() {
+      var returnVal = {}
+      console.log(catelogApi, '22222', [catelogApi]);
+      [catelogApi].map(_apiObj => {
+        Object.keys(_apiObj).forEach(_item => {
+          console.log(_item, '333333333', returnVal[_item]);
+          returnVal[_item] = ({ commit }, obj) => {
+            // console.log(returnVal, '=====', obj);
+            return new Promise((resolve, reject) => {
+              // console.log(_apiObj[_item](obj), '=====', obj);
+              _apiObj[_item](obj).then(response => {
+                if (resolveList.hasOwnProperty(_item)) {
+                  resolve(resolveList[_item](response, commit))
+                } else {
+                  resolve(response)
+                }
+              }).catch(error => {
+                if (rejectList.hasOwnProperty(_item)) {
+                  reject(rejectList[_item(error, commit)])
+                } else {
+                  reject(error)
+                }
+              })
+            })
+          }
+        })
+      })
+      return returnVal
+    }
+      export default catelog
+```
+
 

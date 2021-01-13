@@ -22,9 +22,19 @@ export default {
         { id: 1, name: '张三1', age: 151 },
         { id: 2, name: '张三2', age: 152 },
         { id: 3, name: '张三3', age: 153 },
-        { id: 4, name: '张三4', age: 154 }
-      ]
+        { id: 4, name: '张三4', age: 154 },
+      ],
     }
-  }
+  },
+  methods: {
+    abc() {
+      this.$http.get('api/a/b/c').then((res) => {
+        console.log(res)
+      })
+    },
+  },
+  created() {
+    this.abc()
+  },
 }
 </script>

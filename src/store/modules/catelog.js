@@ -8,13 +8,13 @@ const catelog = {
       2: '不勾选'
     },
     statusList: [{
-        type: 1,
-        name: '订阅完成'
-      },
-      {
-        type: 2,
-        name: '取消订阅'
-      }
+      type: 1,
+      name: '订阅完成'
+    },
+    {
+      type: 2,
+      name: '取消订阅'
+    }
     ],
     statusColorObj: {
       '警告': 'warnning',
@@ -40,14 +40,14 @@ const catelog = {
 
 function getActions() {
   var returnVal = {}
-  console.log([catelogApi]);
-  // [catelogApi, catelogApi, catelogApi].map()
+  console.log(catelogApi, '22222', [catelogApi]);
   [catelogApi].map(_apiObj => {
     Object.keys(_apiObj).forEach(_item => {
-      returnVal[_item] = ({
-        commit
-      }, obj) => {
+      console.log(_item, '333333333', returnVal[_item]);
+      returnVal[_item] = ({ commit }, obj) => {
+        // console.log(returnVal, '=====', obj);
         return new Promise((resolve, reject) => {
+          // console.log(_apiObj[_item](obj), '=====', obj);
           _apiObj[_item](obj).then(response => {
             if (resolveList.hasOwnProperty(_item)) {
               resolve(resolveList[_item](response, commit))

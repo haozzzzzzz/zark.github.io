@@ -7,53 +7,72 @@
     <div class="container">
       <el-tabs v-model="activeName" @tab-click="handleClick">
         <!-- 绑定label的值  用字符串 模板字符串拼接 -->
-        <el-tab-pane :label=" `未读消息(${tabData.length})` " name="first">
+        <el-tab-pane :label="`未读消息(${tabData.length})`" name="first">
           <el-table :data="tabData" :show-header="false">
             <el-table-column>
               <template slot-scope="scope">
-                <span class="message-title">{{scope.row.title}}</span>
+                <span class="message-title">{{ scope.row.title }}</span>
               </template>
             </el-table-column>
             <el-table-column prop="date"></el-table-column>
             <el-table-column width="120">
               <template slot-scope="scope">
-                <el-button size="small" type="success" @click="handleRead(scope.$index)">标为已读</el-button>
+                <el-button
+                  size="small"
+                  type="success"
+                  @click="handleRead(scope.$index)"
+                  >标为已读</el-button
+                >
               </template>
             </el-table-column>
           </el-table>
           <div class="handle-row">
-            <el-button type="primary" @click="AllHandleRead">全部标为已读</el-button>
+            <el-button type="primary" @click="AllHandleRead"
+              >全部标为已读</el-button
+            >
           </div>
         </el-tab-pane>
         <el-tab-pane :label="`已读消息(${Read.length})`" name="second">
           <el-table :data="Read" :show-header="false">
             <el-table-column>
               <template slot-scope="scope">
-                <span class="message-title">{{scope.row.title}}</span>
+                <span class="message-title">{{ scope.row.title }}</span>
               </template>
             </el-table-column>
             <el-table-column prop="date"></el-table-column>
             <el-table-column width="120">
               <template slot-scope="scope">
-                <el-button size="small" type="danger" @click="handleDelete(scope.$index)">删除</el-button>
+                <el-button
+                  size="small"
+                  type="danger"
+                  @click="handleDelete(scope.$index)"
+                  >删除</el-button
+                >
               </template>
             </el-table-column>
           </el-table>
           <div class="handle-row">
-            <el-button type="danger" @click="AllHandleDelete">删除全部</el-button>
+            <el-button type="danger" @click="AllHandleDelete"
+              >删除全部</el-button
+            >
           </div>
         </el-tab-pane>
         <el-tab-pane :label="`回收站(${recycle.length})`" name="third">
           <el-table :data="recycle" :show-header="false">
             <el-table-column>
               <template slot-scope="scope">
-                <span class="message-title">{{scope.row.title}}</span>
+                <span class="message-title">{{ scope.row.title }}</span>
               </template>
             </el-table-column>
             <el-table-column prop="date"></el-table-column>
             <el-table-column width="120">
               <template slot-scope="scope">
-                <el-button size="small" type="danger" @click="handleReduction(scope.$index)">还原</el-button>
+                <el-button
+                  size="small"
+                  type="danger"
+                  @click="handleReduction(scope.$index)"
+                  >还原</el-button
+                >
               </template>
             </el-table-column>
           </el-table>
@@ -63,13 +82,17 @@
         </el-tab-pane>
       </el-tabs>
     </div>
-    <div>{{value}}</div>
+    <div>{{ value }}</div>
+    <div>
+      <el-input v-model="inputVal" @input="ddddd"> </el-input>
+    </div>
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
+      inputVal: '',
       activeName: 'first',
       value: '',
       tabData: [
@@ -103,6 +126,17 @@ export default {
     })
   },
   methods: {
+    ddddd(e) {
+      var reg = new RegExp('^(\\d|[1-9]\\d|100)$')
+      if (!reg.test(e)) {
+        var currentNum = e.replace(/[^1-9]/ig, '').substring(0, 3);
+        // var Num = currentNum.substring(0, 2);
+        // currentNum * 1 > 100 ? Num : currentNum;
+        this.inputVal = currentNum
+      } else {
+        this.inputVal = e
+      }
+    },
     animation(value) {
       console.log('进来了 ---')
       let number = value

@@ -21,17 +21,19 @@ serve.interceptors.request.use((config) => {
       'Content-Type': 'application/json'
     }
   } else {
-     // if (config.postType && config.postType === 'json') {
-    //   config.headers = {
-    //     'Content-Type': 'application/json'
-    //   }    本来在上面的  这个判断可以替换mtheod==post这里
-    // }
+     if (config.postType && config.postType === 'json') {
+      config.headers = {
+        'Content-Type': 'application/json'
+      }
+      // 本来在上面的  这个判断可以替换mtheod==post这里
+    }
     if (config.method === 'post' || config.method === 'put') {
       // config.data = qs.stringify(JSON.flatten(config.data))
       config.data = qs.stringify(config.data)
-    }
-    config.headers = {
-      'Content-Type': 'application/x-www-form-urlencoded'
+
+      config.headers = {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
     }
   }
   return config
@@ -41,9 +43,11 @@ serve.interceptors.request.use((config) => {
 })
 
 // 2.2 拦截响应
-serve.interceptors.response.use((config) => {
+serve.interceptors.response.use((response) => {
   // ...
-  return config
+  const res = response.data
+
+  return res
 }, (error) => {
   // ...
   return Promise.reject(error)

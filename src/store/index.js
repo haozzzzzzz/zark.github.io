@@ -23,6 +23,7 @@ const store = new Vuex.Store({
     testMutations(state, payload) {
       console.log(1111, state, payload);
       state.info = payload.amount
+      state.count = payload.count
     }
   },
   getters: {

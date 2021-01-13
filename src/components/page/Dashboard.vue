@@ -137,7 +137,7 @@ export default {
       textarea3: '',
       textarea2: '',
       demo: '',
-      name: localStorage.getItem('ms_username'),
+      name: localStorage.getItem('key'),
       todoList: [
         {
           title: '今天要修复100个bug',
@@ -249,10 +249,13 @@ export default {
       return this.name === 'admin' ? '超级管理员' : '普通用户'
     },
   },
-  // created() {
+  created() {
+    this.$store.dispatch('dataListId', 20).then(res => {
+      console.log(res, '2323232');
+    })
   //     this.handleListener();
   //     this.changeDate();
-  // },
+  },
   // activated() {
   //     this.handleListener();
   // },
@@ -266,6 +269,7 @@ export default {
       let amount = {
         type: 'test',
         amount: 'test',
+        count: 0
       }
 
       this.$store.dispatch(amount)
