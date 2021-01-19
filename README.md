@@ -216,7 +216,7 @@ localStorage.getItem('key')
           }
         }
 ```
- 
+
 4. 使用Action *提交的是 mutation*  主要处理异步
 ```jsx
     state: {
@@ -287,7 +287,8 @@ localStorage.getItem('key')
 
     2. getters.js
       const getters ={
-        statusList:(state)=>state.catelog.statusList
+        statusList:(state)=>state.catelog.statusList,
+        xxxxlist:(state)=>state.catelog.xxxxList
         //  通过...mapGetters(['statusList'])   直接在组件内使用this.statusList数组 相当于data里面定义的数组
       }
     3. catelog.js 
